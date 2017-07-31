@@ -121,6 +121,22 @@ public class InputHandler {
                     pickBlock(schematic, ClientProxy.objectMouseOver);
                 }
             }
+
+            if (event instanceof InputEvent.KeyInputEvent) {
+                // instanceof check partially due to MinecraftForge#4270
+                // and partially to prevent checking the last key during
+                // "real" mouse processing
+
+                // F3+A is not rebindable, but we want to hook into it.
+                // See: Minecraft.processKeyF3 and Minecraft.runTickKeyboard
+                boolean isKeyDown = Keyboard.getEventKeyState();
+                int key = Keyboard.getEventKey() == 0 ? Keyboard.getEventCharacter() + 256 : Keyboard.getEventKey();
+
+                if (isKeyDown && Keyboard.isKeyDown(Keyboard.KEY_F3)
+                        && key == Keyboard.KEY_A) {
+                    RenderSchematic.INSTANCE.refresh();
+                }
+            }
         }
     }
 
