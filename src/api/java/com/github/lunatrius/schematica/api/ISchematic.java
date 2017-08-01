@@ -95,21 +95,21 @@ public interface ISchematic {
     void setIcon(ItemStack icon);
 
     /**
-     * The width of the schematic
+     * The width of the schematic (along the X axis)
      *
      * @return the schematic width
      */
     int getWidth();
 
     /**
-     * The length of the schematic
+     * The length of the schematic (along the Z axis)
      *
      * @return the schematic length
      */
     int getLength();
 
     /**
-     * The height of the schematic
+     * The height of the schematic (along the Y axis)
      *
      * @return the schematic height
      */
